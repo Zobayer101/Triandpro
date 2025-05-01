@@ -1,0 +1,365 @@
+.MainInBox {
+  width: 100%;
+  height: 100vh;
+}
+.InCon {
+  width: 100%;
+  height: calc(100% - 80px);
+  background: #ffffff;
+  display: flex;
+}
+.msgSetion {
+  width: 300px;
+  height: 100%;
+  flex-shrink: 0;
+}
+.SearchSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70px;
+}
+.Searcharea {
+  width: 98%;
+  height: 40px;
+
+  display: flex;
+}
+.searchme {
+  height: 100%;
+  flex-grow: 1;
+  padding: 5px;
+  font-size: large;
+  color: #333333;
+  border: none;
+  outline: none;
+  border-radius: 10px 0 0px 10px;
+  background: #e7e7e7;
+}
+.searchSub {
+  width: 60px;
+  height: 100%;
+  font-size: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e91442;
+  color: #ffffff;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.searchSub:hover {
+  background: #d31a1a;
+}
+.Contction {
+  width: 100%;
+  height: calc(100% - 80px);
+
+  overflow: auto;
+}
+.Indivisul {
+  width: 97%;
+  height: 60px;
+  margin: 3px;
+  border-radius: 5px;
+  display: flex;
+  background: #ecebeb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.Face {
+  width: 50px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.faceImg {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.onlineEx {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background: #0bf732;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transform: translate(13px, 15px);
+}
+.msgDalivary {
+  width: 75%;
+  flex-grow: 1;
+  height: 100%;
+  position: relative;
+}
+.TextMsg {
+  height: 100%;
+  width: 70%;
+
+  flex-grow: 1;
+}
+.upperText {
+  width: 100%;
+  height: 70%;
+  font-size: 16px;
+  color: #3b3939;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-weight: bold;
+}
+.Loaertext {
+  width: 100%;
+  height: 30%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.signal {
+  width: 60px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lastmsg {
+  padding-left: 10px;
+  width: 70%;
+  font-size: 12px;
+  color: #333333;
+}
+.Indivisul:hover {
+  background: #c2c1c1;
+}
+
+.messagesall {
+  background: #e9e9e9;
+  padding: 5px;
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: auto;
+}
+.ProBlock {
+  width: 100%;
+  height: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+}
+.BackBtn {
+  top: 10px;
+  left: 10px;
+  width: 80px;
+  height: 30px;
+  background: #3a36369c;
+  position: sticky;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.bimg {
+  width: 100%;
+  height: 120px;
+
+  display: flex;
+  justify-content: center;
+}
+.omgPro {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.ProImgs {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgb(38, 250, 38);
+}
+.onlineStatus {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  background: #0bf732;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  transform: translate(-30px, 85px);
+}
+.btext {
+  width: 100%;
+  height: 75px;
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #707070;
+}
+.msgSender {
+  width: 100%;
+
+  /* background: #dfc0c0; */
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.profileSectionSend {
+  padding: 10px;
+  width: 50px;
+  height: 100%;
+  /* background: #683eff; */
+  display: flex;
+  align-items: start;
+}
+.myImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.msgSenD {
+  padding: 10px;
+  width: calc(50% - 40px);
+  /* height: 100%; */
+  /* background: #87f1f1; */
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.textmsge {
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px 0 5px 5px;
+  font-size: 18px;
+  color: #1d1d1d;
+  text-align: right;
+  background: #dad8d8;
+}
+.atcimg {
+  width: 200px;
+  height: 250px;
+  margin: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.msgRisever {
+  width: 100%;
+
+  display: flex;
+}
+.ProfileImages {
+  padding: 10px;
+  width: 50px;
+
+  display: flex;
+  align-items: start;
+}
+.mainRisivemsg {
+  width: calc(50% - 50px);
+  height: 100%;
+  /* background: #8c20e4; */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.risiveprofile {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.textmsgRis {
+  padding: 5px;
+  margin: 3px;
+  border-radius: 0 5px 5px 5px;
+  font-size: 18px;
+  color: #1d1d1d;
+
+  background: #dad8d8;
+  text-align: left;
+}
+.atcRiciveimg {
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
+  margin: 10px;
+  object-fit: cover;
+}
+.messwriter {
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  justify-content: space-between;
+}
+.addAtuch {
+  width: 80px;
+  height: 100%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  color: #057714;
+  background: #ffffff;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.addAtuch:hover,
+.submitBtn:hover {
+  background: #bbc7bd;
+}
+.Inmassages {
+  width: 80%;
+  height: 100%;
+  font-size: 18px;
+  color: #3b3939;
+  padding: 10px;
+  flex-grow: 1;
+  outline: none;
+  border: none;
+}
+.submitBtn {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #057714;
+  cursor: pointer;
+  width: 80px;
+  height: 100%;
+  background: #fdfcfd;
+  transition: 0.4s;
+}
+@media screen and (max-width: 1000px) {
+  .msgSenD {
+    width: calc(100% - 40px);
+  }
+  .mainRisivemsg {
+    width: calc(100% - 40px);
+  }
+}
+@media screen and (max-width: 600px) {
+  .msgDalivary {
+    width: 100%;
+  }
+  .msgSetion {
+    display: none;
+  }
+  .BackBtn {
+    display: flex;
+  }
+}

@@ -1,0 +1,25 @@
+.HomeContuner {
+  width: 100%;
+  display: flex;
+  background: #f8f6f6;
+}
+.peopleSection {
+  width: 80%;
+  position: relative;
+}
+.messageSection {
+  width: 300px;
+  height: calc(100vh - 80px);
+  position: sticky;
+  flex-shrink: 0;
+  top: 80px;
+  /* background: #6f86b8; */
+}
+@media screen and (max-width: 900px) {
+  .messageSection {
+    display: none;
+  }
+  .peopleSection {
+    width: 100%;
+  }
+}

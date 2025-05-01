@@ -1,0 +1,195 @@
+.BgFrom {
+  /* margin-top: 50px; */
+  padding: 5px;
+  height: 450px;
+  width: 480px;
+  background: #f5efef;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+.Mheignt {
+  height: 500px;
+}
+.Imgs {
+  width: 100%;
+  height: 20%;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.Boldtext {
+  width: 100%;
+  height: 10%;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d1d1d;
+}
+.Iama {
+  width: 100%;
+  height: 12%;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.EmailSection,
+.PassSection {
+  width: 100%;
+  height: 16%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.errmsg {
+  color: #ff0b0b;
+  font-size: 14px;
+}
+.emailIn {
+  width: 80%;
+  height: 45px;
+  outline: none;
+  padding: 8px;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #575757;
+  border: 1px solid #2f005c;
+}
+
+.female,
+.male {
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgb(78, 80, 80);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.female.yescolor {
+  color: #ee2121;
+  border: 1px solid rgb(255, 3, 3);
+}
+.male.yescolor {
+  color: #ee2121;
+  border: 1px solid rgb(255, 3, 3);
+}
+.TextBold {
+  font-size: 18px;
+  color: #1a1717;
+  padding-right: 5px;
+}
+.Gap {
+  width: 10px;
+}
+.Age {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.optionSelect {
+  width: 80px;
+  margin: 5px;
+  font-size: 18px;
+  padding: 5px;
+  border: none;
+}
+.Chat,
+.Google {
+  width: 100%;
+  height: 12%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Chat {
+  gap: 10px;
+}
+.LgButton,
+.Sgbutton {
+  width: 39%;
+  height: 70%;
+  background: #a8a6a6;
+  display: flex;
+  align-items: center;
+  color: #fdf9f9;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  justify-content: center;
+  transition: 0.4s;
+}
+.Sgbutton.Login {
+  background: #b90000;
+}
+.Sgbutton.Login:hover {
+  border: 1px solid rgb(44, 216, 1);
+  background: #7c0101;
+}
+.Sgbutton.mybtn,
+.LgButton.mybtn {
+  border: 1px solid rgb(5, 1, 63);
+  background: #838383;
+}
+.LgButton:hover {
+  background: #777777da;
+}
+.Sgbutton.mybtn:hover,
+.LgButton.mybtn:hover {
+  background: #cc0202;
+}
+.requiredmsg {
+  font-size: 14px;
+  color: red;
+  text-align: center;
+}
+.gButton {
+  width: 80%;
+  height: 70%;
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  color: #dad8d8;
+  font-weight: 800;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  background: #bb1b1b;
+  transition: 0.3s;
+}
+
+.title {
+  margin-top: 10px;
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tX {
+  width: 70%;
+  font-size: 11px;
+  color: #665d5d;
+}
+.littelText {
+  width: 100%;
+  height: 8%;
+  color: #5c5555;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 600px) {
+  .BgFrom {
+    width: 100%;
+  }
+}

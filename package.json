@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "expressjs": "^1.0.1",
+    "mysql": "^2.18.1",
+    "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4",
-    "@eslint/eslintrc": "^3"
-  }
+    "eslint-config-next": "15.2.4"
+  },
+  "description": "bacendproject",
+  "main": "index.js",
+  "author": "md zobayerhosen",
+  "license": "ISC"
 }

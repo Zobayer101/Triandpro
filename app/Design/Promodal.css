@@ -1,0 +1,89 @@
+.PBox {
+  width: 300px;
+  position: relative;
+  height: 400px;
+  background: #f3f1f1;
+  margin-top: 80px;
+  border-radius: 8px;
+}
+.PSection {
+  width: 100%;
+  height: 180px;
+}
+
+.Imsec {
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imagess {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.user {
+  width: 100%;
+  height: 80px;
+}
+.userName {
+  width: 100%;
+  height: 40px;
+
+  font-size: 21px;
+  display: flex;
+
+  justify-content: center;
+}
+.MyPro {
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.MyPro:hover {
+  color: #520303;
+}
+.PageSection {
+  margin-top: 8px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #222222;
+}
+
+.Close {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  color: #666666;
+  cursor: pointer;
+  transform: translateX(256px);
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Close:hover {
+  color: #b10303;
+}
+.PageSectionupdate {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
