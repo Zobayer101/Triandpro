@@ -3,6 +3,282 @@
   top: 0;
   width: 100%;
   height: 100vh;
-  background: #96969698;
+  display: flex;
+  justify-content: center;
   z-index: 100;
+  align-items: center;
+}
+.modalBox {
+  width: 70%;
+  height: 500px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+@media screen and (max-width: 700px) {
+  .modalBox {
+    width: 100%;
+  }
+}
+.AboutText {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 500;
+  color: rgb(76, 72, 72);
+}
+.NameBox,
+.BirthdayBox,
+.HomeCityBox,
+.NextsubBox {
+  width: 100%;
+  height: 80px;
+}
+.NameBox {
+  /* background: #dddddd; */
+  display: flex;
+  justify-content: center;
+}
+.textSections {
+  width: 100px;
+  height: 100%;
+  /* background: #593cdd; */
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.insections {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+.inputNames {
+  width: 100%;
+  height: 70%;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  outline: 1px solid #73dbe2;
+  font-size: 18px;
+}
+.BirthdayBox {
+  /* background: #979deb; */
+  display: flex;
+  justify-content: center;
+}
+.barthdaytx {
+  width: 100px;
+  height: 100%;
+  /* background: #858484; */
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barthdayselect {
+  width: 60%;
+  height: 100%;
+  /* background: #c55555; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.selectDAte {
+  width: 100%;
+  height: 70%;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  outline: 1px solid #73dbe2;
+  border-radius: 5px;
+}
+.NextsubBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.IntarestHade {
+  width: 100%;
+  height: 80px;
+
+  font-size: 40px;
+  color: rgb(43, 43, 43);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.interestcon {
+  padding: 10px;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  /* flex-direction: column; */
+  /* background: #ebebeb; */
+}
+.allItems {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 80%;
+}
+.footbal {
+  /* width: 80px; */
+  margin: 8px;
+  /* height: 30px; */
+  cursor: pointer;
+  padding: 10px;
+  background: #eeecec;
+  color: #242323;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.newDes {
+  background: #ff3f3f;
+  color: #fff;
+}
+.nextBtns {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nextBtns.intarest {
+  justify-content: space-around;
+}
+.scipebtn {
+  width: 100px;
+  height: 45px;
+  border: 1px solid #6e22e7;
+  color: #181818;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.scipebtn:hover {
+  color: #fff;
+  background: #6d6d6e;
+}
+.nextbtn {
+  width: 30%;
+  height: 60%;
+  background: #ad0505;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.nextbtn:hover {
+  background: #e00e0e;
+}
+.ProHead {
+  width: 100%;
+  height: 120px;
+  font-size: 35px;
+  color: #444444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.ProBody {
+  width: 100%;
+  height: 300px;
+  /* background: #afafaf; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mainproimg {
+  width: 200px;
+  height: 220px;
+
+  position: relative;
+}
+.ImgBoxe {
+  width: 100%;
+  height: 150px;
+}
+.imgTexs {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  font-weight: bold;
+  color: #cecece;
+  background: rgb(87, 87, 87);
+}
+.omgImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.selectaImages {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.idalP {
+  width: 100%;
+  height: 100px;
+  color: #444444;
+  font-size: 35px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.TextArea {
+  width: 100%;
+  height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textareaDesign {
+  width: 80%;
+  border: none;
+  outline: 1px solid #73dbe2;
+  resize: none;
+  padding: 10px;
+  height: 180px;
+  font-size: 16px;
+  color: #444444;
+}
+.AboutHade {
+  width: 100%;
+  height: 80px;
+  font-size: 35px;
+  color: #444444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

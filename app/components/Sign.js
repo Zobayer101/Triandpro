@@ -20,11 +20,16 @@ const Sign = () => {
     lastR: "",
   });
   const [err, setErr] = useState(false);
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [ldata, setLdata] = useState({ email: "", pass: "" });
 
   const inputControll = (propaty, value) => {
     setSignup((pre) => ({
+      ...pre,
+      [propaty]: value,
+    }));
+  };
+  const LoginInputControll = (propaty, value) => {
+    setLdata((pre) => ({
       ...pre,
       [propaty]: value,
     }));
@@ -34,9 +39,7 @@ const Sign = () => {
       signup.email &&
       signup.pass.length >= 5 &&
       signup.Igender &&
-      signup.wgender &&
-      signup.firstR &&
-      signup.lastR
+      signup.wgender
     ) {
       let url = "  http://localhost:3300/api/insart/signup";
       let response = await fetch(url, {
@@ -59,7 +62,20 @@ const Sign = () => {
     }
   };
   const LoginSubmit = async () => {
-    alert("login complite");
+    let url = `http://localhost:3300/api/data/login`;
+    let responce = await fetch(url, {
+      method: "post",
+      body: JSON.stringify(ldata),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    let result = await responce.json();
+    if (result) {
+      alert(JSON.stringify(result));
+      localStorage.setItem("Info", JSON.stringify(result));
+      redirect("/");
+    }
   };
   return (
     <>
@@ -77,24 +93,24 @@ const Sign = () => {
               type="email"
               placeholder="Enter your email"
               className="emailIn"
-              value={email}
+              value={ldata.email}
               onChange={(e) => {
-                setEmail(e.target.value);
+                LoginInputControll("email", e.target.value);
               }}
             />
-            <p className="errmsg">* something want wrong !</p>
+            {/* <p className="errmsg">* something want wrong !</p> */}
           </div>
           <div className="PassSection">
             <input
               type="password"
               placeholder="Enter your password"
               className="emailIn"
-              value={pass}
+              value={ldata.pass}
               onChange={(e) => {
-                setPass(e.target.value);
+                LoginInputControll("pass", e.target.value);
               }}
             />
-            <p className="errmsg">* wrong password !</p>
+            {/* <p className="errmsg">* wrong password !</p> */}
           </div>
 
           <div className="Chat">
