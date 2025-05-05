@@ -1,13 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Design/Getmodal.css";
 import selectImg from "../Image/notuser.png";
 import Image from "next/image";
 
 const Getmodal = () => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [partner, setPartner] = useState({ mypartner: "", aboutI: "" });
+  const [aboutme, setAboutme] = useState({
+    Name: "",
+    DateOfBarth: "",
+    Location: "",
+  });
   const [page, setPage] = useState("info");
   const [item, setItem] = useState({
     Lying: false,
@@ -35,11 +41,72 @@ const Getmodal = () => {
     Sports: false,
     Meditation: false,
   });
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("Info"));
+    if (!data) {
+      redirect("/Signup");
+    } else if (data.accountstatus == 0) {
+      setModal(false);
+    }
+  }, []);
   const handelchange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImage(file);
       setPreview(URL.createObjectURL(file));
+    }
+  };
+  const aboutHandel = (propaty, value) => {
+    setAboutme((pre) => ({ ...pre, [propaty]: value }));
+  };
+  const partnerHandler = (propaty, value) => {
+    setPartner((pre) => ({ ...pre, [propaty]: value }));
+  };
+  const AlldataUpload = async () => {
+    if (image) {
+      const data = JSON.stringify({ aboutme, item, partner });
+
+      let url = ` http://localhost:3300/api/moredata/comeuser`;
+      let responce = await fetch(url, {
+        method: "post",
+        body: data,
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      let result = await responce.json();
+      if (result) {
+        setModal(true);
+        alert("data upload successfully");
+      }
+    }
+  };
+  const ProfileUpload = async () => {
+    if (image) {
+      const fromData = new FormData();
+      fromData.append("image", image);
+      let url = ` http://localhost:3300/api/data/profile/uploder`;
+      const responce = await fetch(url, {
+        method: "post",
+        body: fromData,
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+        const result = await responce.json();
+        if (result) {
+            setPage("partner");
+        }
+    } else {
+      alert("select your profilepicture!");
+    }
+  };
+  const AboutChecker = () => {
+    if (aboutme.Name && aboutme.DateOfBarth && aboutme.Location) {
+      setPage("intarest");
+    } else {
+      alert("all data are required !");
     }
   };
   return (
@@ -54,7 +121,12 @@ const Getmodal = () => {
                 <div className="NameBox">
                   <div className="textSections">Name or nickname :</div>
                   <div className="insections">
-                    <input type="text" className="inputNames" />
+                    <input
+                      type="text"
+                      className="inputNames"
+                      value={aboutme.Name}
+                      onChange={(e) => aboutHandel("Name", e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className="BirthdayBox">
@@ -64,6 +136,10 @@ const Getmodal = () => {
                       type="date"
                       max={"2008-12-31"}
                       className="selectDAte"
+                      value={aboutme.DateOfBarth}
+                      onChange={(e) =>
+                        aboutHandel("DateOfBarth", e.target.value)
+                      }
                     />
                   </div>
                 </div>
@@ -74,11 +150,13 @@ const Getmodal = () => {
                       type="text"
                       className="inputNames"
                       placeholder="country,city"
+                      value={aboutme.Location}
+                      onChange={(e) => aboutHandel("Location", e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="NextsubBox">
-                  <div className="nextbtn" onClick={() => setPage("intarest")}>
+                  <div className="nextbtn" onClick={() => AboutChecker()}>
                     next
                   </div>
                 </div>
@@ -294,7 +372,7 @@ const Getmodal = () => {
                   </div>
                 </div>
                 <div className="nextBtns ">
-                  <div className="nextbtn" onClick={() => setPage("partner")}>
+                  <div className="nextbtn" onClick={() => ProfileUpload()}>
                     next
                   </div>
                 </div>
@@ -307,6 +385,10 @@ const Getmodal = () => {
                     maxLength={700}
                     placeholder="Few words about your ideal partner.."
                     className="textareaDesign"
+                    value={partner.mypartner}
+                    onChange={(e) =>
+                      partnerHandler("mypartner", e.target.value)
+                    }
                   ></textarea>
                 </div>
                 <div className="nextBtns intarest">
@@ -327,13 +409,15 @@ const Getmodal = () => {
                     maxLength={700}
                     placeholder="Few words about your ideal partner.."
                     className="textareaDesign"
+                    value={partner.aboutI}
+                    onChange={(e) => partnerHandler("aboutI", e.target.value)}
                   ></textarea>
                 </div>
                 <div className="nextBtns intarest">
-                  <div className="scipebtn" onClick={() => setPage("about")}>
+                  <div className="scipebtn" onClick={() => AlldataUpload()}>
                     skip
                   </div>
-                  <div className="nextbtn" onClick={() => setPage("info")}>
+                  <div className="nextbtn" onClick={() => AlldataUpload()}>
                     next
                   </div>
                 </div>

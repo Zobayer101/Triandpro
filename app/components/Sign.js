@@ -5,7 +5,7 @@ import Image from "next/image";
 import { SlUserFemale } from "react-icons/sl";
 import { GrUserManager } from "react-icons/gr";
 import "../Design/BgFrom.css";
-import Link from "next/link";
+
 import { useState } from "react";
 import { redirect } from "next/navigation";
 
@@ -55,6 +55,7 @@ const Sign = () => {
       setErr(false);
       if (result) {
         localStorage.setItem("Info", JSON.stringify(result));
+
         redirect("/");
       }
     } else {
