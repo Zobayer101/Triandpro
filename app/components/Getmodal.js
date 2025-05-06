@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "../Design/Getmodal.css";
 import selectImg from "../Image/notuser.png";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 const Getmodal = () => {
   const [modal, setModal] = useState(true);
@@ -66,6 +67,7 @@ const Getmodal = () => {
   const AlldataUpload = async () => {
     if (image) {
       const data = JSON.stringify({ aboutme, item, partner });
+      let Token = localStorage.getItem("Token");
 
       let url = ` http://localhost:3300/api/moredata/comeuser`;
       let responce = await fetch(url, {
@@ -73,31 +75,34 @@ const Getmodal = () => {
         body: data,
         headers: {
           "Content-type": "application/json",
+          Token,
         },
       });
       let result = await responce.json();
       if (result) {
+        localStorage.removeItem("Info");
+        localStorage.setItem("Info", JSON.stringify(result));
         setModal(true);
-        alert("data upload successfully");
       }
     }
   };
   const ProfileUpload = async () => {
     if (image) {
+      let Token = localStorage.getItem("Token");
       const fromData = new FormData();
-      fromData.append("image", image);
+      fromData.append("file", image);
       let url = ` http://localhost:3300/api/data/profile/uploder`;
       const responce = await fetch(url, {
         method: "post",
-        body: fromData,
         headers: {
-          "Content-type": "application/json",
+          Token,
         },
+        body: fromData,
       });
-        const result = await responce.json();
-        if (result) {
-            setPage("partner");
-        }
+      const result = await responce.json();
+      if (result) {
+        setPage("partner");
+      }
     } else {
       alert("select your profilepicture!");
     }

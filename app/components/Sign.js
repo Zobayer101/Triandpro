@@ -54,7 +54,9 @@ const Sign = () => {
 
       setErr(false);
       if (result) {
-        localStorage.setItem("Info", JSON.stringify(result));
+        console.log(result);
+        localStorage.setItem("Info", JSON.stringify(result.info));
+        localStorage.setItem("Token", JSON.stringify(result.Token));
 
         redirect("/");
       }
@@ -74,7 +76,8 @@ const Sign = () => {
     let result = await responce.json();
     if (result) {
       alert(JSON.stringify(result));
-      localStorage.setItem("Info", JSON.stringify(result));
+      localStorage.setItem("Info", JSON.stringify(result.info));
+      localStorage.setItem("Token", JSON.stringify(result.Token));
       redirect("/");
     }
   };
