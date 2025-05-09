@@ -99,12 +99,7 @@ const Getmodal = () => {
         },
         body: fromData,
       });
-      const result = await responce.json();
-      if (result) {
-        setPage("partner");
-      }
-    } else {
-      alert("select your profilepicture!");
+      await responce.json();
     }
   };
   const AboutChecker = () => {
@@ -377,7 +372,7 @@ const Getmodal = () => {
                   </div>
                 </div>
                 <div className="nextBtns ">
-                  <div className="nextbtn" onClick={() => ProfileUpload()}>
+                  <div className="nextbtn" onClick={() => setPage("partner")}>
                     next
                   </div>
                 </div>
@@ -422,7 +417,12 @@ const Getmodal = () => {
                   <div className="scipebtn" onClick={() => AlldataUpload()}>
                     skip
                   </div>
-                  <div className="nextbtn" onClick={() => AlldataUpload()}>
+                  <div
+                    className="nextbtn"
+                    onClick={() => {
+                      AlldataUpload(), ProfileUpload();
+                    }}
+                  >
                     next
                   </div>
                 </div>

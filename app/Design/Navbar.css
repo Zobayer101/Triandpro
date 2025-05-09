@@ -106,7 +106,7 @@ a {
   display: block;
 }
 @media screen and (max-width: 800px) {
-  .UpgreadAccount {
+  .UpgreadAccount.Bar {
     display: none;
   }
   .Iconp {
@@ -327,5 +327,4 @@ a {
   background: #172add6c;
   display: flex;
   justify-content: center;
-  
 }

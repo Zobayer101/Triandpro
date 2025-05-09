@@ -52,7 +52,7 @@ const Navebar = () => {
             <HiOutlineMail />
           </div>
         </Link>
-        <div className="UpgreadAccount" onClick={() => setPricing(true)}>
+        <div className="UpgreadAccount Bar" onClick={() => setPricing(true)}>
           <div className="saveMoney">Save 60% </div>
           <div className="upgrad">upgrade </div>
         </div>
@@ -172,22 +172,20 @@ const Navebar = () => {
               <div className="Close" onClick={() => setPfile(false)}>
                 <RxCrossCircled />
               </div>
-              <div className="Imsec">
-                <Image
-                  src={ProImage}
-                  alt="profileimage.png"
-                  placeholder="blur"
-                  className="imagess"
-                />
-              </div>
-              <div className="user">
-                <div className="userName">emma e.pass </div>
-                <div className="MyPro">
-                  <Link href={"/Myprofile"} onClick={() => setPfile(false)}>
-                    Myprofile
-                  </Link>{" "}
+              <Link href={"/Myprofile"} onClick={() => setPfile(false)}>
+                <div className="Imsec">
+                  <Image
+                    src={ProImage}
+                    alt="profileimage.png"
+                    placeholder="blur"
+                    className="imagess"
+                  />
                 </div>
-              </div>
+                <div className="user">
+                  <div className="userName">emma e.pass </div>
+                  <div className="MyPro">Myprofile </div>
+                </div>
+              </Link>
             </div>
             <div className="PageSectionupdate">
               <div

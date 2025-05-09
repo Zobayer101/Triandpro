@@ -5,9 +5,10 @@ import Image from "next/image";
 import { SlUserFemale } from "react-icons/sl";
 import { GrUserManager } from "react-icons/gr";
 import "../Design/BgFrom.css";
-
-import { useState } from "react";
+import { SessionProvider } from "next-auth/react";
+import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
+import Login from "./Login";
 
 const Sign = () => {
   const [status, setStatus] = useState("");
@@ -22,6 +23,13 @@ const Sign = () => {
   const [err, setErr] = useState(false);
   const [ldata, setLdata] = useState({ email: "", pass: "" });
 
+  useEffect(() => {
+    let Token = localStorage.getItem("Token");
+    let Info = localStorage.getItem("Info");
+    if (Token && Info) {
+      redirect("/");
+    }
+  }, []);
   const inputControll = (propaty, value) => {
     setSignup((pre) => ({
       ...pre,
@@ -50,11 +58,9 @@ const Sign = () => {
         },
       });
       let result = await response.json();
-      alert(JSON.stringify(result));
 
       setErr(false);
       if (result) {
-        console.log(result);
         localStorage.setItem("Info", JSON.stringify(result.info));
         localStorage.setItem("Token", JSON.stringify(result.Token));
 
@@ -406,7 +412,10 @@ const Sign = () => {
             </select>
           </div>
           <div className="Google">
-            <div className="gButton">google</div>
+            <SessionProvider>
+              <Login data={signup} />
+            </SessionProvider>
+            {/* <div className="gButton">google</div> */}
           </div>
           <div className="Chat">
             <div className="LgButton mybtn" onClick={() => setStatus("login")}>
