@@ -71,20 +71,24 @@ const Sign = () => {
     }
   };
   const LoginSubmit = async () => {
-    let url = `http://localhost:3300/api/data/login`;
-    let responce = await fetch(url, {
-      method: "post",
-      body: JSON.stringify(ldata),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-    let result = await responce.json();
-    if (result) {
-      alert(JSON.stringify(result));
-      localStorage.setItem("Info", JSON.stringify(result.info));
-      localStorage.setItem("Token", JSON.stringify(result.Token));
-      redirect("/");
+    try {
+      let url = `http://localhost:3300/api/data/login`;
+      let responce = await fetch(url, {
+        method: "post",
+        body: JSON.stringify(ldata),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      let result = await responce.json();
+
+      if (result) {
+        localStorage.setItem("Info", JSON.stringify(result.info));
+        localStorage.setItem("Token", JSON.stringify(result.Token));
+        redirect("/");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (

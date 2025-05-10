@@ -1,3 +1,4 @@
+"use client";
 import Navebar from "../components/Navebar";
 import Image from "next/image";
 import Profiles from "../Image/image.jpg";
@@ -9,10 +10,329 @@ import { MdAddAPhoto } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
 import Sidemsg from "../components/Sidemsg";
 import "../Design/Myprofile.css";
+import { useState } from "react";
 const Myprofile = () => {
+  const [image, setImage] = useState(null);
+  const [preview, setPriview] = useState(null);
+  const [pro, setPro] = useState(null);
+  const [video, setVideo] = useState(null);
+  const [publics, setPublic] = useState(null);
+  const [pri, setPrivate] = useState(null);
+  const [about, setAbout] = useState(false);
+  const [looking, setLooking] = useState(false);
+  const [interest, setInterest] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [item, setItem] = useState({
+    Lying: false,
+    Comping: false,
+    Dancing: false,
+    Fishing: false,
+    Hockey: false,
+    music: false,
+    Sailing: false,
+    Travelling: false,
+    Biking: false,
+    Cars: false,
+    Diving: false,
+    Games: false,
+    Movies: false,
+    Nature: false,
+    Shopping: false,
+    WatchingTV: false,
+    Reading: false,
+    Cooking: false,
+    Fashion: false,
+    Hobbies: false,
+    Museums: false,
+    Party: false,
+    Sports: false,
+    Meditation: false,
+  });
+  const HandelChange = (e, FildName) => {
+    const file = e.target.files[0];
+    if (FildName == "bg") {
+      if (file) {
+        setImage(file);
+        setPriview(URL.createObjectURL(file));
+      }
+    } else if (FildName == "pro") {
+      if (file) {
+        setImage(file);
+        setPro(URL.createObjectURL(file));
+      }
+    } else if (FildName == "video") {
+      if (file) {
+        setImage(file);
+        setVideo(URL.createObjectURL(file));
+      }
+    } else if (FildName == "public") {
+      if (file) {
+        setImage(file);
+        setPublic(URL.createObjectURL(file));
+      }
+    } else if (FildName == "private") {
+      if (file) {
+        setImage(file);
+        setPrivate(URL.createObjectURL(file));
+      }
+    }
+  };
+
   return (
     <div>
       <Navebar />
+      {modal ? (
+        <div className="OuterModal">
+          <div className="modalBox">
+            {about ? (
+              <>
+                <div className="AboutHade">Some interesting about you</div>
+                <div className="TextArea">
+                  <textarea
+                    maxLength={700}
+                    placeholder="Few interesting words about you ..."
+                    className="textareaDesign"
+                  ></textarea>
+                </div>
+                <div className="nextBtns intarest">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setAbout(false);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div className="nextbtn" onClick={() => ""}>
+                    update
+                  </div>
+                </div>
+              </>
+            ) : looking ? (
+              <>
+                <div className="AboutHade">I am Looking for</div>
+                <div className="TextArea">
+                  <textarea
+                    maxLength={700}
+                    placeholder="About your ideal partner..."
+                    className="textareaDesign"
+                  ></textarea>
+                </div>
+                <div className="nextBtns intarest">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setLooking(false);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div className="nextbtn" onClick={() => ""}>
+                    update
+                  </div>
+                </div>
+              </>
+            ) : interest ? (
+              <>
+                <div className="IntarestHade">Your interests</div>
+                <div className="interestcon">
+                  <div className="allItems">
+                    <div
+                      className={item.Lying ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Lying: !item.Lying })}
+                    >
+                      Lying on the beach
+                    </div>
+                    <div
+                      className={item.Comping ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Comping: !item.Comping })
+                      }
+                    >
+                      Comping
+                    </div>
+                    <div
+                      className={item.Dancing ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Dancing: !item.Dancing })
+                      }
+                    >
+                      Dancing
+                    </div>
+                    <div
+                      className={item.Fishing ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Fishing: !item.Fishing })
+                      }
+                    >
+                      Fishing & Hunting
+                    </div>
+                    <div
+                      className={item.Hockey ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Hockey: !item.Hockey })}
+                    >
+                      Hockey
+                    </div>
+                    <div
+                      className={item.music ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, music: !item.music })}
+                    >
+                      music & Concerts
+                    </div>
+                    <div
+                      className={item.Sailing ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Sailing: !item.Sailing })
+                      }
+                    >
+                      Sailing
+                    </div>
+                    <div
+                      className={item.Travelling ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Travelling: !item.Travelling })
+                      }
+                    >
+                      Travelling
+                    </div>
+                    <div
+                      className={item.Biking ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Biking: !item.Biking })}
+                    >
+                      Biking
+                    </div>
+                    <div
+                      className={item.Cars ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Cars: !item.Cars })}
+                    >
+                      Cars
+                    </div>
+                    <div
+                      className={item.Diving ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Diving: !item.Diving })}
+                    >
+                      Diving
+                    </div>
+                    <div
+                      className={item.Games ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Games: !item.Games })}
+                    >
+                      Games
+                    </div>
+                    <div
+                      className={item.Movies ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Movies: !item.Movies })}
+                    >
+                      Movies
+                    </div>
+                    <div
+                      className={item.Nature ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Nature: !item.Nature })}
+                    >
+                      Nature
+                    </div>
+                    <div
+                      className={item.Shopping ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Shopping: !item.Shopping })
+                      }
+                    >
+                      Shopping
+                    </div>
+                    <div
+                      className={item.WatchingTV ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, WatchingTV: !item.WatchingTV })
+                      }
+                    >
+                      Watching TV
+                    </div>
+                    <div
+                      className={item.Reading ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Reading: !item.Reading })
+                      }
+                    >
+                      Reading books
+                    </div>
+                    <div
+                      className={item.Cooking ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Cooking: !item.Cooking })
+                      }
+                    >
+                      Cooking
+                    </div>
+                    <div
+                      className={item.Fashion ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Fashion: !item.Fashion })
+                      }
+                    >
+                      Fashion
+                    </div>
+                    <div
+                      className={item.Hobbies ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Hobbies: !item.Hobbies })
+                      }
+                    >
+                      Hobbies & Crafts
+                    </div>
+                    <div
+                      className={item.Museums ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Museums: !item.Museums })
+                      }
+                    >
+                      Museums & Art
+                    </div>
+                    <div
+                      className={item.Party ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Party: !item.Party })}
+                    >
+                      Party & Night Clubs
+                    </div>
+                    <div
+                      className={item.Sports ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Sports: !item.Sports })}
+                    >
+                      Sports
+                    </div>
+                    <div
+                      className={item.Meditation ? "footbal newDes" : "footbal"}
+                      onClick={() =>
+                        setItem({ ...item, Meditation: !item.Meditation })
+                      }
+                    >
+                      Meditation & Yoga
+                    </div>
+                  </div>
+                </div>
+
+                <div className="nextBtns intarest">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setInterest(false);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div className="nextbtn" onClick={() => ""}>
+                    update
+                  </div>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="ProfileCon">
         <div className="ProCon">
           <div className="MAhad">
@@ -21,19 +341,33 @@ const Myprofile = () => {
                 <div className="bfhead">
                   <div className="FollowBtn">
                     <BiSolidEdit />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="Intypef"
+                      onChange={(e) => HandelChange(e, "bg")}
+                    />
                   </div>
                 </div>
                 <div className="mainProphoto">
                   <div className="ProImgsf">
                     <Image
-                      src={Profiles}
+                      src={pro || Profiles}
                       alt="profile"
-                      placeholder="blur"
-                      loading="lazy"
+                      // placeholder="blur"
+                      // loading="lazy"
+                      width={100}
+                      height={100}
                       className="proImagst"
                     />
                     <div className="uploadPro">
                       <IoCameraReverseOutline />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="Intypef"
+                        onChange={(e) => HandelChange(e, "pro")}
+                      />
                     </div>
                   </div>
                   <div className="Infos">
@@ -51,11 +385,13 @@ const Myprofile = () => {
                 </div>
               </div>
               <Image
-                src={cover}
+                src={preview || cover}
                 alt="cover"
-                placeholder="blur"
-                loading="lazy"
+                // placeholder="blur"
+                // loading="lazy"
                 className="coverImages"
+                width={100}
+                height={100}
               />
             </div>
             <div className="SomeTime">
@@ -67,45 +403,69 @@ const Myprofile = () => {
             <div className="myvideo">
               <div className="editorBox">
                 <MdAddAPhoto className="Addphoto" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="Intypef"
+                  onChange={(e) => HandelChange(e, "video")}
+                />
               </div>
               <div className="myvideoBox">
                 <div className="myVide">My Video</div>
                 <div className="myVideIcon">Icon, 3</div>
               </div>
               <Image
-                src={Profiles}
+                src={video || Profiles}
+                width={100}
+                height={100}
                 alt="pro"
-                placeholder="blur"
+                // placeholder="blur"
                 className="myphotoss"
               />
             </div>
             <div className="myphoto">
               <div className="editorBox">
                 <MdAddAPhoto className="Addphoto" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="Intypef"
+                  onChange={(e) => HandelChange(e, "public")}
+                />
               </div>
               <div className="myvideoBox">
                 <div className="myVide">My Photos</div>
                 <div className="myVideIcon">Icon, 6</div>
               </div>
               <Image
-                src={Profiles}
+                src={publics || Profiles}
+                width={100}
+                height={100}
                 alt="pro"
-                placeholder="blur"
+                // placeholder="blur"
                 className="myphotoss"
               />
             </div>
             <div className="myphoto">
               <div className="editorBox">
                 <MdAddAPhoto className="Addphoto" />
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="Intypef"
+                  onChange={(e) => HandelChange(e, "private")}
+                />
               </div>
               <div className="myvideoBox">
                 <div className="myVide">My Private</div>
                 <div className="myVideIcon">Icon, 10</div>
               </div>
               <Image
-                src={Profiles}
+                src={pri || Profiles}
+                width={100}
+                height={100}
                 alt="pro"
-                placeholder="blur"
+                // placeholder="blur"
                 className="myphotoss"
               />
             </div>
@@ -117,7 +477,12 @@ const Myprofile = () => {
                 {" "}
                 <div className="Itext">My Interests</div>
                 <div className="Editable">
-                  <MdOutlineEdit className="PEdits" />
+                  <MdOutlineEdit
+                    className="PEdits"
+                    onClick={() => {
+                      setModal(true), setInterest(true);
+                    }}
+                  />
                 </div>
               </div>
               <div className="myIntarastIcon">
@@ -139,7 +504,12 @@ const Myprofile = () => {
               <div className="TheXhad">
                 <div className="Itext">About Me</div>
                 <div className="Editable">
-                  <MdOutlineEdit className="PEdits" />
+                  <MdOutlineEdit
+                    className="PEdits"
+                    onClick={() => {
+                      setModal(true), setAbout(true);
+                    }}
+                  />
                 </div>
               </div>
               <div className="texeBodys">
@@ -192,9 +562,14 @@ const Myprofile = () => {
             <div className="lokingFor">
               {" "}
               <div className="TheXhad">
-                <div className="Itext">I'am Looking for</div>
+                <div className="Itext">I am Looking for</div>
                 <div className="Editable">
-                  <MdOutlineEdit className="PEdits" />
+                  <MdOutlineEdit
+                    className="PEdits"
+                    onClick={() => {
+                      setModal(true), setLooking(true);
+                    }}
+                  />
                 </div>
               </div>
               <div className="Iwantto">Man, 18 years and older</div>

@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Profiles from "../Image/image.jpg";
 import cover from "../Image/Comfortzone.png";

@@ -46,7 +46,7 @@ const People = () => {
       >
         {data.map((value, index) => {
           return (
-            <Link href={"/Profile"} key={index} className="cardx">
+            <span key={index} className="cardx">
               <div className="CardPeople">
                 <div className="VariviedIcon">
                   <Image src={varified} alt="varified.png" className="Vfid" />
@@ -71,7 +71,7 @@ const People = () => {
                         <span
                           onClick={() => {
                             //  e.stopPropagation();
-                            router.push("/");
+                            router.push("/Inbox");
                           }}
                           className="InboxLink"
                         >
@@ -83,6 +83,10 @@ const People = () => {
                   <div className="withoutDtils"></div>
                 </div>
                 <Image
+                  onClick={() => {
+                    //  e.stopPropagation();
+                    router.push("/Profile");
+                  }}
                   src={Imgsx}
                   alt="card"
                   className="imgsx"
@@ -90,7 +94,7 @@ const People = () => {
                   loading="lazy"
                 />
               </div>
-            </Link>
+            </span>
           );
         })}
       </InfiniteScroll>
