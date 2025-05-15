@@ -81,10 +81,10 @@ const Sign = () => {
         },
       });
       let result = await responce.json();
-
       if (result) {
         localStorage.setItem("Info", JSON.stringify(result.info));
         localStorage.setItem("Token", JSON.stringify(result.Token));
+
         redirect("/");
       }
     } catch (error) {

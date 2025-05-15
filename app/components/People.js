@@ -7,7 +7,7 @@ import varified from "../Image/varified.png";
 import { PiVideo } from "react-icons/pi";
 // import { HiOutlineCheckBadge } from "react-icons/hi2";
 import Imgsx from "../Image/pexels-ali-pazani-2921424.jpg";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -19,6 +19,7 @@ const People = () => {
   const [hasMore, setHaseMore] = useState(true);
   const FetchingData = async () => {
     let Token = localStorage.getItem("Token");
+
     let url = `http://localhost:3300/api/user/infinitidata/retrive?page=${page}&limit=5`;
     let responce = await fetch(url, {
       method: "get",
@@ -33,7 +34,12 @@ const People = () => {
     SetPage((pre) => pre + 1);
   };
   useEffect(() => {
-    FetchingData();
+    let Token = localStorage.getItem("Token");
+    if (JSON.parse(Token)) {
+      FetchingData();
+    } else {
+      redirect("/Signup");
+    }
   }, []);
   return (
     <div className="PeopleCon">

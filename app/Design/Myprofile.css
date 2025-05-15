@@ -274,7 +274,7 @@
 .PEdits {
   width: 40px;
   height: 40px;
-  background: #81e1ee;
+  background: #637580;
   padding: 10px;
   color: #ffffff;
   border-radius: 50%;
@@ -286,13 +286,95 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
 }
 .Icon {
-  margin: 5px;
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  /* height: 80px; */
+  padding: 5px;
+}
+.Imgot {
+  padding: 15px;
+  font-size: 70px;
+  color: #fff;
   border-radius: 50%;
-  background: #2db9ae;
+}
+.Imgot.one {
+  background: #c106da;
+}
+.Imgot.tow {
+  background: #099ee4;
+}
+.Imgot.five {
+  background: #cf0606;
+}
+.Imgot.four {
+  background: #8a16e9;
+}
+.Imgot.six {
+  background: #66d102;
+}
+.Imgot.seven {
+  background: #ce21bf;
+}
+.Imgot.eight {
+  background: #26b667;
+}
+.Imgot.nine {
+  background: #998d1f;
+}
+.Imgot.ten {
+  background: #78dd50;
+}
+.Imgot.ellavan {
+  background: #e2603f;
+}
+.Imgot.thirtin {
+  background: #3fe2a3;
+}
+.Imgot.fourten {
+  background: #623fe2;
+}
+.Imgot.fivten {
+  background: #e2df3f;
+}
+.Imgot.sixten {
+  background: #e72f2f;
+}
+.Imgot.seventen {
+  background: #28551f;
+}
+.Imgot.ninten {
+  background: #c6ff42;
+}
+.Imgot.towenty {
+  background: #9f29e4;
+}
+.Imgot.towentyone {
+  background: #bed305;
+}
+.Imgot.towentytow {
+  background: #dd3fe2;
+}
+.Imgot.towentythree {
+  background: #3f4ae2;
+}
+.Imgot.towentyfour {
+  background: #e23f3f;
+}
+.Imgot.towentyfive {
+  background: #b1e23f;
+}
+.Imgot.towentysix {
+  background: #39ebf8;
+}
+.Imgot.towelve {
+  background: #e72e6b;
+}
+.potname {
+  text-align: center;
+  color: #444444;
+  font-size: 14px;
 }
 .aboutmE,
 .lokingFor {
@@ -318,12 +400,7 @@
   padding: 10px;
   font-size: 16px;
 }
-.Iwantto {
-  margin: 0 10px 0px 10px;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: 600;
-}
+
 .Lokingfordiscription {
   padding: 0 10px 10px 10px;
   margin: 0 10px 10px 10px;
@@ -344,6 +421,7 @@
   top: 0;
   z-index: 199;
   width: 100%;
+  overflow: auto;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -353,15 +431,11 @@
 
 .modalBox {
   width: 70%;
-  height: 560px;
+  height: auto;
   background: #ffffff;
   border-radius: 10px;
 }
-@media screen and (max-width: 700px) {
-  .modalBox {
-    width: 100%;
-  }
-}
+
 .AboutHade {
   width: 100%;
   height: 80px;
@@ -372,59 +446,67 @@
   justify-content: center;
   text-align: center;
 }
-.TextArea {
+.outerFrom {
   width: 100%;
-  height: 300px;
+  height: 85%;
 
+  /* background: #948f8f; */
+}
+.ItemSectionBlnk {
+  width: 100%;
+  /* background: #9f95fa; */
+  height: 370px;
+}
+.ItemSection {
+  width: 100%;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* background: #fff6f6; */
 }
-.textareaDesign {
-  width: 80%;
+.FromText {
+  width: 40%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.InD {
+  width: 45%;
+  height: 40px;
+  padding: 10px;
   border: none;
-  outline: 1px solid #73dbe2;
-  resize: none;
-  padding: 10px;
-  height: 180px;
-  font-size: 16px;
-  color: #444444;
-}
-.Updatebtn {
-  width: 100%;
-  height: 80px;
-  /* background: #8b7f7f; */
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.updateNow {
-  padding: 10px;
-  width: 120px;
-  height: 45px;
-  background: #ac0303;
-  color: #fff;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 10px;
+  color: rgb(51, 51, 51);
+  border-radius: 5px;
+  outline: 1px solid rgb(7, 68, 35);
 }
-.cancile {
-  width: 100px;
-  border-radius: 10px;
-  height: 45px;
-  background: #d4d4d4;
-  color: #444444;
-  padding: 10px;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+@media screen and (max-width: 700px) {
+  .modalBox {
+    width: 100%;
+  }
+  .ItemSectionBlnk {
+    height: 750px;
+  }
+  .ItemSection {
+    flex-direction: column;
+    height: 100px;
+  }
+  .FromText {
+    width: 80%;
+    justify-content: start;
+    align-items: end;
+  }
+  .InD {
+    width: 80%;
+  }
 }
-
 @media screen and (max-width: 800px) {
   .AboutAll {
     flex-direction: column;

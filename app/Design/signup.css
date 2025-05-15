@@ -120,6 +120,47 @@
   align-items: center;
   justify-content: center;
 }
+.ReviewHad {
+  width: 100%;
+  height: 30%;
+  /* background: #7dbfca; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.myavatarIcon {
+  margin: 10px;
+  width: 80px;
+  border-radius: 50%;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.myavatarIcon.Border {
+  padding: 2px;
+  border: 2px solid rgb(0, 255, 64);
+}
+.Bodyreview {
+  width: 100%;
+  height: 70%;
+  /* background: #afa8a8; */
+}
+.BoldText {
+  font-size: 40px;
+  color: #202020;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.smalltext {
+  height: 50%s;
+  font-size: 18px;
+  color: #1a1717;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 1000px) {
   .inSection {
     width: 90%;

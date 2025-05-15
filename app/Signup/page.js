@@ -8,14 +8,14 @@ import { FaGlobeAmericas } from "react-icons/fa";
 import userOne from "../Image/pexels-tuấn-kiệt-jr-1386604.jpg";
 import userTow from "../Image/pexels-anna-nekrashevich-6475978.jpg";
 import userThree from "../Image/pexels-ali-pazani-2921424.jpg";
-import Link from "next/link";
+
 import Sign from "../components/Sign";
+import Review from "../components/Review";
 const Signup = () => {
   return (
     <div className="OuterCon">
       <div className="ConOne">
         <div className="inSection">
-         
           <Sign />
         </div>
       </div>
@@ -58,7 +58,7 @@ const Signup = () => {
                 className="userOne"
               />
             </div>
-            <div className="textsus">karina...,25</div>
+            <div className="textsus">karina,25</div>
           </div>
           <div className="proCicrelx">
             <div className="imgBar">
@@ -148,8 +148,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
-      
-      <div className="Review"></div>
+      <Review />
+
       <div className="Fotter">
         <div className="Copyright">
           Copyright Tirandpro.com 2025. All rights reserved
