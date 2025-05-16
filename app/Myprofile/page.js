@@ -34,6 +34,7 @@ import { GiPartyPopper } from "react-icons/gi";
 import { TbMovie } from "react-icons/tb";
 import { IoGameControllerOutline } from "react-icons/io5";
 import "../Design/Myprofile.css";
+import updateUser from "../components/UpdateUser";
 import { useEffect, useState } from "react";
 
 const Myprofile = () => {
@@ -98,13 +99,17 @@ const Myprofile = () => {
           headers: { "Content-type": "application/json", Token },
         });
         let result = await res.json();
+
+        console.log(result);
         setItem(JSON.parse(result.Intarast));
         setMypro(result.Profile);
         setMypertener(result.AboutPartner);
-        console.log(result);
+        result.AboutMe != "" && setAboutFrom(JSON.parse(result.AboutMe));
       })();
     }
   }, []);
+  console.log(item);
+
   const HandelChange = (e, FildName) => {
     const file = e.target.files[0];
     if (FildName == "bg") {
@@ -140,6 +145,7 @@ const Myprofile = () => {
       [propaty]: value,
     }));
   };
+
   return (
     <div>
       <Navebar />
@@ -359,7 +365,17 @@ const Myprofile = () => {
                   >
                     cancile
                   </div>
-                  <div className="nextbtn" onClick={() => ""}>
+                  <div
+                    className="nextbtn"
+                    onClick={() => {
+                      let data = updateUser.ProfileUpdate(
+                        "http://localhost:3300/api/update/userdata/aboutme",
+                        aboutfrom,
+                        localStorage.getItem("Token")
+                      );
+                      data && setModal(false), setAbout(false);
+                    }}
+                  >
                     update
                   </div>
                 </div>
@@ -385,7 +401,17 @@ const Myprofile = () => {
                   >
                     cancile
                   </div>
-                  <div className="nextbtn" onClick={() => ""}>
+                  <div
+                    className="nextbtn"
+                    onClick={() => {
+                      let data = updateUser.ProfileUpdate(
+                        "http://localhost:3300/api/lookingfor/user/dataupdate",
+                        { mypertener },
+                        localStorage.getItem("Token")
+                      );
+                      data && setModal(false), setAbout(false);
+                    }}
+                  >
                     update
                   </div>
                 </div>
@@ -579,7 +605,17 @@ const Myprofile = () => {
                   >
                     cancile
                   </div>
-                  <div className="nextbtn" onClick={() => ""}>
+                  <div
+                    className="nextbtn"
+                    onClick={() => {
+                      let data = updateUser.ProfileUpdate(
+                        "http://localhost:3300/api/update/itemdata/user/myprofile",
+                        item,
+                        localStorage.getItem("Token")
+                      );
+                      data && setModal(false), setAbout(false);
+                    }}
+                  >
                     update
                   </div>
                 </div>
@@ -613,8 +649,9 @@ const Myprofile = () => {
                   <div className="ProImgsf">
                     <Image
                       src={
-                        pro || Profiles
-                        //`http://localhost:3300/public/img/profile/${mypro}`
+                        pro ||
+                        `http://localhost:3300/public/img/profile/${mypro}` ||
+                        Profiles
                       }
                       alt="profile"
                       // placeholder="blur"
