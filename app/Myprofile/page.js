@@ -50,6 +50,7 @@ const Myprofile = () => {
   const [looking, setLooking] = useState(false);
   const [interest, setInterest] = useState(false);
   const [modal, setModal] = useState(false);
+  const [submitPro, setSubmitPro] = useState("");
   const [item, setItem] = useState({
     Lying: false,
     Comping: false,
@@ -90,6 +91,7 @@ const Myprofile = () => {
     Eyes: "",
     Hair: "",
   });
+
   useEffect(() => {
     let Token = localStorage.getItem("Token");
     if (Token) {
@@ -113,30 +115,40 @@ const Myprofile = () => {
   const HandelChange = (e, FildName) => {
     const file = e.target.files[0];
     if (FildName == "bg") {
-      if (file) {
-        setImage(file);
-        setPriview(URL.createObjectURL(file));
-      }
+      setImage(file);
+      setPriview(URL.createObjectURL(file));
+
+      setModal(true);
+      setSubmitPro("Bg");
     } else if (FildName == "pro") {
-      if (file) {
-        setImage(file);
-        setPro(URL.createObjectURL(file));
-      }
+      setImage(file);
+      setPro(URL.createObjectURL(file));
+      setModal(true);
+      setSubmitPro("Profile");
+      // let datax = updateUser.OtherProfileUpload(
+      //   ` http://localhost:3300/api/data/profile/uploder`,
+      //   fromData,
+      //   localStorage.getItem("Token")
+      // );
+      // console.log(datax);
     } else if (FildName == "video") {
-      if (file) {
-        setImage(file);
-        setVideo(URL.createObjectURL(file));
-      }
+      setImage(file);
+      setVideo(URL.createObjectURL(file));
+
+      setModal(true);
+      setSubmitPro("Video");
     } else if (FildName == "public") {
-      if (file) {
-        setImage(file);
-        setPublic(URL.createObjectURL(file));
-      }
+      setImage(file);
+      setPublic(URL.createObjectURL(file));
+
+      setModal(true);
+      setSubmitPro("public");
     } else if (FildName == "private") {
-      if (file) {
-        setImage(file);
-        setPrivate(URL.createObjectURL(file));
-      }
+      setImage(file);
+      setPrivate(URL.createObjectURL(file));
+
+      setModal(true);
+      setSubmitPro("private");
     }
   };
   const handelChange = (propaty, value) => {
@@ -146,6 +158,56 @@ const Myprofile = () => {
     }));
   };
 
+  const ImageUploder = (data) => {
+    let Token = localStorage.getItem("Token");
+    if (image && data == "profile") {
+      const fromData = new FormData();
+      fromData.append("file", image);
+      let result = updateUser.OtherProfileUpload(
+        "http://localhost:3300/api/data/profile/uploder",
+        fromData,
+        Token
+      );
+      return result;
+    } else if (image && data == "Bg") {
+      const fromData = new FormData();
+      fromData.append("file", image);
+      let result = updateUser.OtherProfileUpload(
+        "http://localhost:3300/api/cover/photo/update/one",
+        fromData,
+        Token
+      );
+      return result;
+    } else if (image && data == "Private") {
+      const fromData = new FormData();
+      fromData.append("file", image);
+      let result = updateUser.OtherProfileUpload(
+        "http://localhost:3300/api/data/profile/uploder",
+        fromData,
+        Token
+      );
+      return result;
+    } else if (image && data == "Public") {
+      const fromData = new FormData();
+      fromData.append("file", image);
+      let result = updateUser.OtherProfileUpload(
+        "http://localhost:3300/api/data/profile/uploder",
+        fromData,
+        Token
+      );
+      return result;
+    }
+    else if (image && data == "Video") {
+      const fromData = new FormData();
+      fromData.append("file", image);
+      let result = updateUser.OtherProfileUpload(
+        "http://localhost:3300/api/data/profile/uploder",
+        fromData,
+        Token
+      );
+      return result;
+    }
+  };
   return (
     <div>
       <Navebar />
@@ -370,7 +432,7 @@ const Myprofile = () => {
                     onClick={() => {
                       let data = updateUser.ProfileUpdate(
                         "http://localhost:3300/api/update/userdata/aboutme",
-                        aboutfrom,
+                        JSON.stringify(aboutfrom),
                         localStorage.getItem("Token")
                       );
                       data && setModal(false), setAbout(false);
@@ -406,7 +468,7 @@ const Myprofile = () => {
                     onClick={() => {
                       let data = updateUser.ProfileUpdate(
                         "http://localhost:3300/api/lookingfor/user/dataupdate",
-                        { mypertener },
+                        JSON.stringify({ mypertener }),
                         localStorage.getItem("Token")
                       );
                       data && setModal(false), setAbout(false);
@@ -480,12 +542,10 @@ const Myprofile = () => {
                       Travelling
                     </div>
                     <div
-                      className={item.Cycling ? "footbal newDes" : "footbal"}
-                      onClick={() =>
-                        setItem({ ...item, Cycling: !item.Cycling })
-                      }
+                      className={item.Biking ? "footbal newDes" : "footbal"}
+                      onClick={() => setItem({ ...item, Biking: !item.Biking })}
                     >
-                      Cycling
+                      Biking
                     </div>
                     <div
                       className={item.Cars ? "footbal newDes" : "footbal"}
@@ -600,23 +660,130 @@ const Myprofile = () => {
                   <div
                     className="scipebtn"
                     onClick={() => {
-                      setModal(false), setInterest(false);
+                      setModal(false);
+                      setInterest(false);
                     }}
                   >
-                    cancile
+                    cancil
                   </div>
                   <div
                     className="nextbtn"
                     onClick={() => {
                       let data = updateUser.ProfileUpdate(
-                        "http://localhost:3300/api/update/itemdata/user/myprofile",
-                        item,
+                        " http://localhost:3300/api/update/itemdata/user/myprofile",
+                        JSON.stringify(item),
                         localStorage.getItem("Token")
                       );
-                      data && setModal(false), setAbout(false);
+                      data && setModal(false), setInterest(false);
                     }}
                   >
-                    update
+                    Save
+                  </div>
+                </div>
+              </>
+            ) : submitPro == "Profile" ? (
+              <>
+                <div className="nextBtns net">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setSubmitPro(""), setPro(null);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div
+                    className="nextbtn temp"
+                    onClick={() => {
+                      let data = ImageUploder("profile");
+                      data && setModal(false), setSubmitPro("");
+                    }}
+                  >
+                    Save
+                  </div>
+                </div>
+              </>
+            ) : submitPro == "Bg" ? (
+              <>
+                <div className="nextBtns net">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setSubmitPro(""), setPriview(null);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div
+                    className="nextbtn temp"
+                    onClick={() => {
+                      setModal(false), setSubmitPro("");
+                    }}
+                  >
+                    Save
+                  </div>
+                </div>
+              </>
+            ) : submitPro == "public" ? (
+              <>
+                <div className="nextBtns net">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setSubmitPro(""), setPublic(null);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div
+                    className="nextbtn temp"
+                    onClick={() => {
+                      setModal(false), setSubmitPro("");
+                    }}
+                  >
+                    Save
+                  </div>
+                </div>
+              </>
+            ) : submitPro == "private" ? (
+              <>
+                <div className="nextBtns net">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setSubmitPro(""), setPrivate(null);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div
+                    className="nextbtn temp"
+                    onClick={() => {
+                      setModal(false), setSubmitPro("");
+                    }}
+                  >
+                    Save
+                  </div>
+                </div>
+              </>
+            ) : submitPro == "Video" ? (
+              <>
+                <div className="nextBtns net">
+                  <div
+                    className="scipebtn"
+                    onClick={() => {
+                      setModal(false), setSubmitPro(""), setVideo(null);
+                    }}
+                  >
+                    cancile
+                  </div>
+                  <div
+                    className="nextbtn temp"
+                    onClick={() => {
+                      setModal(false), setSubmitPro("");
+                    }}
+                  >
+                    Save
                   </div>
                 </div>
               </>
