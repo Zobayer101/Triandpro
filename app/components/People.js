@@ -4,14 +4,17 @@ import Image from "next/image";
 import "../Design/People.css";
 import { IoCameraOutline } from "react-icons/io5";
 import varified from "../Image/varified.png";
+import Novarified from "../Image/Novarified.png";
+
 import { PiVideo } from "react-icons/pi";
 // import { HiOutlineCheckBadge } from "react-icons/hi2";
-import Imgsx from "../Image/pexels-ali-pazani-2921424.jpg";
+import Imgsx from "../Image/notuser.png";
 import { redirect, useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Link from "next/link";
+import Loding from "./Loding";
+
 const People = () => {
   const router = useRouter();
   const [page, SetPage] = useState(1);
@@ -47,37 +50,46 @@ const People = () => {
         dataLength={data.length}
         hasMore={hasMore}
         next={FetchingData}
-        loader={<h2>Loding...</h2>}
+        loader={<Loding />}
         className="scrolling"
       >
         {data.map((value, index) => {
           return (
             <span key={index} className="cardx">
+              {console.log(value)}
               <div className="CardPeople">
                 <div className="VariviedIcon">
-                  <Image src={varified} alt="varified.png" className="Vfid" />
+                  <Image
+                    src={value.Varified ? varified : Novarified}
+                    alt="varified.png"
+                    className="Vfid"
+                    title={
+                      value.Varified ? "verified user" : "not verified user"
+                    }
+                  />
                 </div>
                 <div className="InfoSectioncard">
                   <div className="withCbtn">
                     <div className="NameAge">
-                      Agatha,{""}58 <span className="actbtn"></span>
+                      {value.Name || "empty "} {value.Age || "no Data"}
+                      {value.Online && <span className="actbtn"></span>}
                     </div>
                     <div className="photovideo">
                       <div className="Iphoto">
-                        <IoCameraOutline />{" "}
-                        <span className="picNumber"> 39</span>
+                        <IoCameraOutline className="cameraIconsD" />{" "}
+                        <span className="picNumber"> {value.media_count}</span>
                       </div>
-                      <div className="Ivideo">
+                      {/* <div className="Ivideo">
                         <PiVideo />
                         <span className="picNumber">9</span>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="ChatBtn">
                       <div className="Cbtn">
                         <span
                           onClick={() => {
                             //  e.stopPropagation();
-                            router.push("/Inbox");
+                            router.push(`/Inbox?id=${value.user_id}`);
                           }}
                           className="InboxLink"
                         >
@@ -91,13 +103,17 @@ const People = () => {
                 <Image
                   onClick={() => {
                     //  e.stopPropagation();
-                    router.push("/Profile");
+                    router.push(`/Profile?id=${value.user_id}`);
                   }}
-                  src={Imgsx}
-                  alt="card"
+                  src={
+                    value.Profile
+                      ? `http://localhost:3300/public/img/profile/${value.Profile}`
+                      : Imgsx
+                  }
+                  alt="card.png"
+                  width={99}
+                  height={98}
                   className="imgsx"
-                  placeholder="blur"
-                  loading="lazy"
                 />
               </div>
             </span>

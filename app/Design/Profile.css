@@ -223,7 +223,7 @@
   position: relative;
 }
 .OurBgImage {
-  background-image: url("../Image/image.jpg");
+  /* background-image: url("../Image/image.jpg"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -273,39 +273,106 @@
 
   gap: 10px;
 }
-.myIntarast {
-  margin-top: 15px;
-  width: 100%;
-}
-.myIntarastCore {
-  width: 98%;
-
-  margin: auto;
-  padding: 5px;
-  border-radius: 10px;
-  background: #f7f4f4;
-}
-.myIntarastTex {
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
-  height: 40px;
-  font-size: 22px;
-  color: #131212;
-  font-weight: 600;
-}
 .myIntarastIcon {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: center;
+}
+.Itext {
+  width: 100%;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: bold;
 }
 .Icon {
-  margin: 5px;
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  /* height: 80px; */
+  padding: 5px;
+}
+.Imgot {
+  padding: 15px;
+  font-size: 70px;
+  color: #fff;
   border-radius: 50%;
-  background: #2db9ae;
+}
+.Imgot.one {
+  background: #c106da;
+}
+.Imgot.tow {
+  background: #099ee4;
+}
+.Imgot.five {
+  background: #cf0606;
+}
+.Imgot.four {
+  background: #8a16e9;
+}
+.Imgot.six {
+  background: #66d102;
+}
+.Imgot.seven {
+  background: #ce21bf;
+}
+.Imgot.eight {
+  background: #26b667;
+}
+.Imgot.nine {
+  background: #998d1f;
+}
+.Imgot.ten {
+  background: #78dd50;
+}
+.Imgot.ellavan {
+  background: #e2603f;
+}
+.Imgot.thirtin {
+  background: #3fe2a3;
+}
+.Imgot.fourten {
+  background: #623fe2;
+}
+.Imgot.fivten {
+  background: #e2df3f;
+}
+.Imgot.sixten {
+  background: #e72f2f;
+}
+.Imgot.seventen {
+  background: #28551f;
+}
+.Imgot.ninten {
+  background: #c6ff42;
+}
+.Imgot.towenty {
+  background: #9f29e4;
+}
+.Imgot.towentyone {
+  background: #bed305;
+}
+.Imgot.towentytow {
+  background: #dd3fe2;
+}
+.Imgot.towentythree {
+  background: #3f4ae2;
+}
+.Imgot.towentyfour {
+  background: #e23f3f;
+}
+.Imgot.towentyfive {
+  background: #b1e23f;
+}
+.Imgot.towentysix {
+  background: #39ebf8;
+}
+.Imgot.towelve {
+  background: #e72e6b;
+}
+.potname {
+  text-align: center;
+  color: #444444;
+  font-size: 14px;
 }
 .aboutmE,
 .lokingFor {

@@ -1,5 +1,4 @@
 exports.ProfileUpdate = async (url, data, token) => {
-  console.log(token);
   const res = await fetch(url, {
     method: "post",
     headers: { "Content-type": "application/json", token },
@@ -10,12 +9,11 @@ exports.ProfileUpdate = async (url, data, token) => {
 };
 
 exports.OtherProfileUpload = async (url, data, token) => {
-  console.log(token);
   const res = await fetch(url, {
     method: "post",
-    headers: {  token },
+    headers: { token },
     body: data,
   });
   let result = await res.json();
   return result;
-}
+};

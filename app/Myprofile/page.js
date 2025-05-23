@@ -1,8 +1,8 @@
 "use client";
 import Navebar from "../components/Navebar";
 import Image from "next/image";
-import Profiles from "../Image/image.jpg";
-import cover from "../Image/Comfortzone.png";
+import Profiles from "../Image/notuser.png";
+
 import { MdOutlineEdit } from "react-icons/md";
 import { IoCameraReverseOutline } from "react-icons/io5";
 import varified from "../Image/varified.png";
@@ -46,6 +46,7 @@ const Myprofile = () => {
   const [pri, setPrivate] = useState(null);
   const [about, setAbout] = useState(false);
   const [mypro, setMypro] = useState("");
+  const [mycover, setCover] = useState("");
   const [mypertener, setMypertener] = useState("");
   const [looking, setLooking] = useState(false);
   const [interest, setInterest] = useState(false);
@@ -97,20 +98,20 @@ const Myprofile = () => {
     if (Token) {
       (async () => {
         let res = await fetch("http://localhost:3300/api/profile/data/user", {
-          method: "get",
+          method: "post",
+          
           headers: { "Content-type": "application/json", Token },
         });
         let result = await res.json();
 
-        console.log(result);
         setItem(JSON.parse(result.Intarast));
         setMypro(result.Profile);
         setMypertener(result.AboutPartner);
+        setCover(result.Coverphoto);
         result.AboutMe != "" && setAboutFrom(JSON.parse(result.AboutMe));
       })();
     }
   }, []);
-  console.log(item);
 
   const HandelChange = (e, FildName) => {
     const file = e.target.files[0];
@@ -177,27 +178,27 @@ const Myprofile = () => {
         fromData,
         Token
       );
+
       return result;
-    } else if (image && data == "Private") {
+    } else if (image && data == "private") {
       const fromData = new FormData();
       fromData.append("file", image);
       let result = updateUser.OtherProfileUpload(
-        "http://localhost:3300/api/data/profile/uploder",
+        "http://localhost:3300/api/photo/private/alluser/upload",
         fromData,
         Token
       );
       return result;
-    } else if (image && data == "Public") {
+    } else if (image && data == "public") {
       const fromData = new FormData();
       fromData.append("file", image);
       let result = updateUser.OtherProfileUpload(
-        "http://localhost:3300/api/data/profile/uploder",
+        "http://localhost:3300/api/photo/publicphoto/upload",
         fromData,
         Token
       );
       return result;
-    }
-    else if (image && data == "Video") {
+    } else if (image && data == "Video") {
       const fromData = new FormData();
       fromData.append("file", image);
       let result = updateUser.OtherProfileUpload(
@@ -717,7 +718,9 @@ const Myprofile = () => {
                   <div
                     className="nextbtn temp"
                     onClick={() => {
-                      setModal(false), setSubmitPro("");
+                      let result = ImageUploder("Bg");
+                      console.log(result);
+                      result && setModal(false), setSubmitPro("");
                     }}
                   >
                     Save
@@ -738,7 +741,8 @@ const Myprofile = () => {
                   <div
                     className="nextbtn temp"
                     onClick={() => {
-                      setModal(false), setSubmitPro("");
+                      let data = ImageUploder("public");
+                      data && setModal(false), setSubmitPro("");
                     }}
                   >
                     Save
@@ -759,7 +763,8 @@ const Myprofile = () => {
                   <div
                     className="nextbtn temp"
                     onClick={() => {
-                      setModal(false), setSubmitPro("");
+                      let result = ImageUploder("private");
+                      result && setModal(false), setSubmitPro("");
                     }}
                   >
                     Save
@@ -852,8 +857,12 @@ const Myprofile = () => {
                 </div>
               </div>
               <Image
-                src={preview || cover}
-                alt="cover"
+                src={
+                  preview ||
+                  `http://localhost:3300/public/coverphoto/${mycover}` ||
+                  Profiles
+                }
+                alt="cover.jpg"
                 // placeholder="blur"
                 // loading="lazy"
                 className="coverImages"

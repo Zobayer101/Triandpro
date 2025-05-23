@@ -2,7 +2,7 @@
 import Image from "next/image";
 import "../Design/Navbar.css";
 import Logo from "../Image/Tirandpro.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RxCrossCircled } from "react-icons/rx";
 import { FaRegCopyright } from "react-icons/fa6";
 import { TiMicrophoneOutline } from "react-icons/ti";
@@ -15,8 +15,10 @@ import { IoSearch } from "react-icons/io5";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoHomeOutline } from "react-icons/io5";
 import "../Design/Promodal.css";
-import ProImage from "../Image/image.jpg";
+import ProImage from "../Image/notuser.png";
 import Getmodal from "./Getmodal";
+import { signOut } from "next-auth/react";
+import { redirect } from "next/navigation";
 // import { RxCrossCircled } from "react-icons/rx";
 
 // import Promodal from "./Promodal";
@@ -24,7 +26,28 @@ const Navebar = () => {
   const [modal, setModal] = useState(false);
   const [pricing, setPricing] = useState(false);
   const [pfile, setPfile] = useState(false);
+  const [data, setData] = useState({});
 
+  useEffect(() => {
+    let Token = localStorage.getItem("Token");
+    if (Token) {
+      (async () => {
+        let res = await fetch("http://localhost:3300/api/profile/data/user", {
+          method: "post",
+
+          headers: { "Content-type": "application/json", Token },
+        });
+        let result = await res.json();
+
+        result && setData({ profile: result.Profile, Name: result.Name });
+      })();
+    }
+  }, []);
+  const Signout = () => {
+    localStorage.clear();
+    signOut();
+    redirect("/");
+  };
   return (
     <div className="Navsection">
       <Link href={"/"}>
@@ -47,6 +70,7 @@ const Navebar = () => {
         </div>
 
         <Link href={"/Inbox"} className="inboxs">
+          <span className="SignalNotice"></span>
           <div className="textp"> Inbox</div>
           <div className="Iconp">
             <HiOutlineMail />
@@ -175,14 +199,19 @@ const Navebar = () => {
               <Link href={"/Myprofile"} onClick={() => setPfile(false)}>
                 <div className="Imsec">
                   <Image
-                    src={ProImage}
+                    src={
+                      data.profile
+                        ? `http://localhost:3300/public/img/profile/${data.profile}`
+                        : ProImage
+                    }
                     alt="profileimage.png"
-                    placeholder="blur"
+                    width={100}
+                    height={100}
                     className="imagess"
                   />
                 </div>
                 <div className="user">
-                  <div className="userName">emma e.pass </div>
+                  <div className="userName">{data.Name} </div>
                   <div className="MyPro">Myprofile </div>
                 </div>
               </Link>
@@ -199,7 +228,7 @@ const Navebar = () => {
               </div>
             </div>
             <div className="PageSection">privacy policy</div>
-            <div className="PageSection">
+            <div className="PageSection" onClick={Signout}>
               {" "}
               sinout <PiSignOutBold />
             </div>

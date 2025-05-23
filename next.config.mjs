@@ -9,6 +9,12 @@ const nextConfig = {
         port: "3300", // <- match your image port
         pathname: "/public/img/profile/**",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "3300",
+        pathname: "/public/coverphoto/**",
+      },
     ],
   },
 };

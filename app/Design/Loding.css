@@ -1,0 +1,25 @@
+.LodingCover {
+  width: 100%;
+  height: 100vh;
+  background: #6179e08c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Triendpro {
+  object-fit: cover;
+  animation: Loding 1s infinite;
+}
+@keyframes Loding {
+  0% {
+    scale: 0.9;
+  }
+
+  50% {
+    scale: 1.4;
+  }
+
+  100% {
+    scale: 0.9;
+  }
+}

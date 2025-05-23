@@ -7,7 +7,7 @@ import { TiMessages } from "react-icons/ti";
 import { FaGlobeAmericas } from "react-icons/fa";
 import userOne from "../Image/pexels-tuấn-kiệt-jr-1386604.jpg";
 import userTow from "../Image/pexels-anna-nekrashevich-6475978.jpg";
-import userThree from "../Image/pexels-ali-pazani-2921424.jpg";
+import userThree from "../Image/person3.jpg";
 
 import Sign from "../components/Sign";
 import Review from "../components/Review";

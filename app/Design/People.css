@@ -20,7 +20,7 @@
 .CardPeople {
   margin-top: 10px;
   width: 100%;
-
+  padding-top: 10px;
   height: 100%;
   display: flex;
 }
@@ -92,9 +92,15 @@
   display: flex;
   font-size: 17px;
   font-weight: 600;
-  color: #fff;
+  color: #39005f;
+
   align-items: center;
   justify-content: space-around;
+}
+.cameraIconsD {
+  font-size: 22px;
+  color: rgb(0, 87, 87);
+  font-weight: bold;
 }
 .ChatBtn {
   width: 100%;

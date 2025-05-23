@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "../Design/Sidemsg.css";
-import Profiles from "../Image/pexels-anna-nekrashevich-6475978.jpg";
+import Profiles from "../Image/notuser.png";
 import { TbMessageHeart } from "react-icons/tb";
 const Sidemsg = () => {
   return (
