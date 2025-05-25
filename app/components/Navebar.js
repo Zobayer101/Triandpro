@@ -19,6 +19,7 @@ import ProImage from "../Image/notuser.png";
 import Getmodal from "./Getmodal";
 import { signOut } from "next-auth/react";
 import { redirect } from "next/navigation";
+
 // import { RxCrossCircled } from "react-icons/rx";
 
 // import Promodal from "./Promodal";
@@ -27,6 +28,8 @@ const Navebar = () => {
   const [pricing, setPricing] = useState(false);
   const [pfile, setPfile] = useState(false);
   const [data, setData] = useState({});
+  const [age, setAge] = useState({ min: "20", max: "80" });
+  const [lokingfor, setLokingFor] = useState("");
 
   useEffect(() => {
     let Token = localStorage.getItem("Token");
@@ -48,39 +51,54 @@ const Navebar = () => {
     signOut();
     redirect("/");
   };
+  const inputController = (propaty, value) => {
+    setAge((pre) => ({
+      ...pre,
+      [propaty]: value,
+    }));
+  };
+  console.log(age);
   return (
     <div className="Navsection">
-      <Link href={"/"}>
+      <Link href={"/"} title="Tirandpro logo">
         <div className="Logos">
           <Image src={Logo} alt="logo.png" width={60} />
         </div>
       </Link>
       <div className="navCon">
-        <Link href={"/"} className="Profils">
+        <Link href={"/"} className="Profils" title="Home">
           <div className="textp"> Home</div>
-          <div className="Iconp">
+          <div className="Iconp" title="Home">
             <IoHomeOutline />
           </div>
         </Link>
-        <div className="searchs" onClick={() => setModal(true)}>
+        <div className="searchs" onClick={() => setModal(true)} title="Search">
           <div className="textp"> Search</div>
-          <div className="Iconp">
+          <div className="Iconp" title="Search">
             <IoSearch />
           </div>
         </div>
 
-        <Link href={"/Inbox"} className="inboxs">
+        <Link href={"/Inbox"} className="inboxs" title="Inbox">
           <span className="SignalNotice"></span>
           <div className="textp"> Inbox</div>
-          <div className="Iconp">
+          <div className="Iconp" title="Inbox">
             <HiOutlineMail />
           </div>
         </Link>
-        <div className="UpgreadAccount Bar" onClick={() => setPricing(true)}>
+        <div
+          className="UpgreadAccount Bar"
+          onClick={() => setPricing(true)}
+          title="Upgrade"
+        >
           <div className="saveMoney">Save 60% </div>
           <div className="upgrad">upgrade </div>
         </div>
-        <div className="ThereeBar" onClick={() => setPfile(true)}>
+        <div
+          className="ThereeBar"
+          onClick={() => setPfile(true)}
+          title="Option"
+        >
           <FaBars />
         </div>
         {/* <div className="Accounts">Account</div> */}
@@ -98,10 +116,76 @@ const Navebar = () => {
                 </div>
               </div>
             </div>
-            <div className="Drop"></div>
-            <div className="Drop"></div>
-            <div className="Drop"></div>
-            <div className="Drop"></div>
+            <div className="IwantSelect">
+              <span className="TextBold">I am a:</span>
+              <select
+                className="lokinFor"
+                onChange={(e) => setLokingFor(e.target.value)}
+              >
+                <option>{""}</option>
+                <option value={"man women"}>man loking for women</option>
+                <option value={"women man"}>women loking for man</option>
+                <option value={"man man"}>man loking for man</option>
+                <option value={"women women"}>women loking for women</option>
+              </select>
+            </div>
+            <div className="Age">
+              <span className="TextBold">Age:</span>
+              <select
+                value={age.min}
+                className="optionSelect"
+                onChange={(e) => inputController("min", e.target.value)}
+              >
+                <option value={"18"}>18</option>
+                <option value={"20"}>20</option>
+                <option value={"25"}>25</option>
+                <option value={"30"}>30</option>
+                <option value={"35"}>35</option>
+                <option value={"40"}>40</option>
+                <option value={"45"}>45</option>
+                <option value={"50"}>50</option>
+                <option value={"55"}>55</option>
+                <option value={"60"}>60</option>
+                <option value={"65"}>65</option>
+                <option value={"70"}>70</option>
+                <option value={"75"}>75</option>
+              </select>{" "}
+              <span className="TextBold">-</span>
+              <select
+                value={age.max}
+                className="optionSelect"
+                onChange={(e) => inputController("max", e.target.value)}
+              >
+                <option value={"80"}>80</option>
+                <option value={"75"}>75</option>
+                <option value={"70"}>70</option>
+                <option value={"65"}>65</option>
+                <option value={"60"}>60</option>
+                <option value={"55"}>55</option>
+                <option value={"50"}>50</option>
+                <option value={"45"}>45</option>
+                <option value={"40"}>40</option>
+                <option value={"35"}>35</option>
+                <option value={"30"}>30</option>
+
+                <option value={"25"}>25</option>
+                <option value={"20"}>20 </option>
+              </select>
+            </div>
+            <div className="SubBtn">
+              <div
+                className="BTnSave"
+                onClick={() => {
+                  localStorage.setItem(
+                    "Search",
+                    JSON.stringify({ lokingfor, age })
+                  );
+                  setModal(false);
+                }}
+              >
+                Save
+              </div>
+            </div>
           </div>
         </div>
       ) : (
@@ -227,7 +311,9 @@ const Navebar = () => {
                 <div className="upgrad">upgrade </div>
               </div>
             </div>
-            <div className="PageSection">privacy policy</div>
+            <Link href={"/PrivacyPolicy"}>
+              <div className="PageSection">privacy policy</div>
+            </Link>
             <div className="PageSection" onClick={Signout}>
               {" "}
               sinout <PiSignOutBold />

@@ -6,7 +6,7 @@ import PersonTow from "../Image/person3.jpg";
 import PersonTheree from "../Image/person5.jpg";
 import { useState } from "react";
 const Review = () => {
-  const [border, setBorder] = useState("");
+  const [border, setBorder] = useState("One");
   return (
     <div className="Review">
       <div className="ReviewHad">

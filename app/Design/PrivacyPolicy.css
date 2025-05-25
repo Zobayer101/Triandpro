@@ -1,3 +1,32 @@
-
-
-
+.PrivacyPage {
+  width: 100%;
+  padding: 7px;
+  /* margin-left: 10%; */
+}
+.ImageSection {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.HeadLine {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}
+.SomeText {
+  width: 80%;
+  font-size: 18px;
+  padding: 20px;
+  margin: 10px;
+}
+.InfoCollact {
+  padding: 20px;
+  margin-top: 30px;
+  margin: 10px;
+}
+.HeadInfo {
+  font-size: 22px;
+  font-weight: 600;
+}

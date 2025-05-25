@@ -47,6 +47,11 @@
   object-fit: cover;
   margin: 5px;
 }
+.Vfid.small {
+  width: 25px;
+  height: 25px;
+  opacity: 0.6;
+}
 .InfoSectioncard {
   bottom: 0;
   width: 100%;

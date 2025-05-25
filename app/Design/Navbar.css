@@ -164,7 +164,7 @@ a {
 }
 .Stext {
   font-size: 20px;
-  padding: 10px;
+  padding: 20px;
 }
 .Dtext {
   height: 100%;
@@ -191,11 +191,65 @@ a {
 .IconClose:hover {
   color: #d12020;
 }
-.Drop {
-  margin-top: 3px;
+.IwantSelect {
   width: 100%;
-  height: 60px;
-  background: #46d2eb;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.TextBold {
+  font-size: 18px;
+  padding: 5px;
+}
+.Age {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.optionSelect {
+  width: 80px;
+  outline: 1px solid #1abe51;
+  margin: 5px;
+  font-size: 18px;
+  padding: 5px;
+  border: none;
+}
+.lokinFor {
+  width: 250px;
+  height: 35px;
+  padding: 5px;
+  border: noen;
+  font-size: 18px;
+  outline: 1px solid #1abe51;
+}
+.SubBtn {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.BTnSave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
+  border: none;
+  font-size: 18px;
+  border-radius: 6px;
+  background: #b91d1d;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s;
+}
+.BTnSave:hover {
+  background: #ec2020;
 }
 .PriceCon {
   width: 100%;

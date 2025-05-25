@@ -5,7 +5,7 @@ import "../Design/People.css";
 import { IoCameraOutline } from "react-icons/io5";
 import varified from "../Image/varified.png";
 import Novarified from "../Image/Novarified.png";
-
+import toast from "react-hot-toast";
 import { PiVideo } from "react-icons/pi";
 // import { HiOutlineCheckBadge } from "react-icons/hi2";
 import Imgsx from "../Image/notuser.png";
@@ -29,10 +29,11 @@ const People = () => {
       headers: { "Content-type": "application/json", Token },
     });
     let result = await responce.json();
-    console.log(result);
+
     if (result.length == 0) {
       setHaseMore(false);
     }
+
     setData((pre) => [...pre, ...result]);
     SetPage((pre) => pre + 1);
   };
@@ -44,6 +45,27 @@ const People = () => {
       redirect("/Signup");
     }
   }, []);
+  const CreateConversation = async (id) => {
+    let OnLoading = toast.loading("Please Wait.. !");
+    const url = `http://localhost:3300/api/conversation/create/user`;
+    let Token = localStorage.getItem("Token");
+    if (Token) {
+      const responce = await fetch(url, {
+        method: "post",
+        headers: { "Content-type": "application/json", Token },
+        body: JSON.stringify({ id }),
+      });
+      const result = await responce.json();
+      if (result) {
+        console.log(result);
+        toast.dismiss(OnLoading);
+        router.push(`/Inbox?id=${id}`);
+      } else {
+        toast.error("Somthing went wrong !");
+      }
+    }
+  };
+
   return (
     <div className="PeopleCon">
       <InfiniteScroll
@@ -56,13 +78,12 @@ const People = () => {
         {data.map((value, index) => {
           return (
             <span key={index} className="cardx">
-              {console.log(value)}
               <div className="CardPeople">
                 <div className="VariviedIcon">
                   <Image
                     src={value.Varified ? varified : Novarified}
                     alt="varified.png"
-                    className="Vfid"
+                    className={value.Varified ? "Vfid" : "Vfid small"}
                     title={
                       value.Varified ? "verified user" : "not verified user"
                     }
@@ -89,7 +110,7 @@ const People = () => {
                         <span
                           onClick={() => {
                             //  e.stopPropagation();
-                            router.push(`/Inbox?id=${value.user_id}`);
+                            CreateConversation(value.user_id);
                           }}
                           className="InboxLink"
                         >

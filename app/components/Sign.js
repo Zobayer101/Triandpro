@@ -9,7 +9,7 @@ import { SessionProvider } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
 import Login from "./Login";
-
+import toast from "react-hot-toast";
 const Sign = () => {
   const [status, setStatus] = useState("");
   const [signup, setSignup] = useState({
@@ -63,10 +63,11 @@ const Sign = () => {
       if (result) {
         localStorage.setItem("Info", JSON.stringify(result.info));
         localStorage.setItem("Token", JSON.stringify(result.Token));
-
+        toast.success("Account Create Successfully!");
         redirect("/");
       }
     } else {
+      toast.error("Something went wrong");
       setErr(true);
     }
   };
@@ -84,11 +85,11 @@ const Sign = () => {
       if (result) {
         localStorage.setItem("Info", JSON.stringify(result.info));
         localStorage.setItem("Token", JSON.stringify(result.Token));
-
+        toast.success("Login Successfully!");
         redirect("/");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong");
     }
   };
   return (
